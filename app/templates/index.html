@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Audio Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Deepfake Audio Detection</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="audioFile">Upload Audio File:</label>
+            <input type="file" id="audioFile" name="audioFile" accept=".wav,.mp3" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if result %}
+            <h2>Classification Result: {{ result }}</h2>
+            <h3>Prediction Score: {{ score }}</h3>
+            <img src="{{ spectrogram }}" alt="Spectrogram">
+        {% endif %}
+    </div>
+</body>
+</html>
